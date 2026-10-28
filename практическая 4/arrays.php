@@ -30,8 +30,8 @@ $sum = 0;
 $product = 1;
 
 foreach ($numbers as $value) {
-    $sum += $value;          // то же самое, что $sum = $sum + $value
-    $product *= $value;      // то же самое, что $product = $product * $value
+    $sum += $value;          
+    $product *= $value;      
 }
 
 echo "Сумма: $sum\n";
@@ -78,6 +78,7 @@ foreach ($numbers as $index => $value) {
         echo "Индекс $index: значение $value\n";
     }
 }
+?>
 <h3>Задача 6</h3>
 <?php
 $numbers = [3, -5, 10, 0, 7, -2, 8];
@@ -101,4 +102,46 @@ for ($i = 0; $i < count($swapped) - 1; $i += 2) {
 
 echo "До перестановки: " . implode(", ", $numbers) . "\n";
 echo "После:          " . implode(", ", $swapped) . "\n";
+?>
+<h3>Задача 8</h3>
+<?php 
+$numbers =[1, 4, 9, 16];
+$count = count($numbers);
+
+if ($count > 1) {
+    // Сохраняем последний элемент
+    $last = $numbers[$count - 1]; 
+    
+    // Сдвигаем элементы вправо, начиная с конца
+    for ($i = $count - 1; $i > 0; $i--) {
+        $numbers[$i] = $numbers[$i - 1];
+    }
+    
+    // Помещаем последний элемент на первое место
+    $numbers[0] = $last; 
+}
+
+print_r($numbers);
+/*
+Вывод скрипта:
+Array ( [0] => 16 [1] => 1 [2] => 4 [3] => 9 )
+*/
+?>
+<h3>Задача 9</h3>
+<?php
+$numbers =[2, 2, 2, 7, 7, 5];
+$count = count($numbers);
+$total_pairs = 0;
+
+// Внешний цикл берет элемент
+for ($i = 0; $i < $count; $i++) {
+    // Внутренний цикл сравнивает его со всеми следующими элементами элементами
+    for ($j = $i + 1; $j < $count; $j++) {
+        if ($numbers[$i] == $numbers[$j]) {
+            $total_pairs++; // Найдено совпадение — засчитывается пара
+        }
+    }
+}
+
+echo "Количество пар равных элементов: " . $total_pairs;
 ?>
